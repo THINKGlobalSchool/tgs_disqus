@@ -12,6 +12,9 @@
 $english = array(
 	// Labels
 	'tgsdisqus:label:shortname' => 'Disqus Shortname',
+	'tgsdisqus:label:publiconly' => 'Show Disqus only when logged out?',
+	'tgsdisqus:label:site_comments' => '%s Comments',
+	'tgsdisqus:label:disqus_comments' => 'Disqus Comments',
 );
 
 add_translation('en',$english);

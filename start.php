@@ -13,9 +13,17 @@ elgg_register_event_handler('init', 'system', 'tgs_discus_init');
 
 // TGS Disqus Init
 function tgs_discus_init() {
-	// Only for public use at the moment
-	if (!elgg_is_logged_in()) {
-		// Extend comments view
-		elgg_extend_view('forms/comments/add', 'tgs_disqus/disqus');
-	}
+	// Register CSS
+	$disqus_css = elgg_get_simplecache_url('css', 'tgs_disqus/css');
+	elgg_register_simplecache_view('css/tgs_disqus/css');	
+	elgg_register_css('elgg.tgs_disqus', $disqus_css);
+	elgg_load_css('elgg.tgs_disqus');
+	
+	// Register JS
+	$disqus_js = elgg_get_simplecache_url('js', 'tgs_disqus/tgs_disqus');
+	elgg_register_simplecache_view('js/tgs_disqus/tgs_disqus');	
+	elgg_register_js('elgg.tgs_disqus', $disqus_js);
+	
+	// Extend comments view
+	elgg_extend_view('page/elements/comments', 'tgs_disqus/disqus', 1);
 }
