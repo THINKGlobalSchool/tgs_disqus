@@ -9,8 +9,8 @@
  * @link http://www.thinkglobalschool.com/
  */
 
-// Restrict to objects for now..
-if (elgg_instanceof($vars['entity'], 'object')) {
+// Restrict to public objects
+if (elgg_instanceof($vars['entity'], 'object') && $vars['entity']->access_id == ACCESS_PUBLIC) {
 
 	// If we don't have an id for the site comments container, set one
 	if (!$vars['id']) {
