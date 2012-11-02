@@ -15,6 +15,22 @@ $english = array(
 	'tgsdisqus:label:publiconly' => 'Show Disqus only when logged out?',
 	'tgsdisqus:label:site_comments' => '%s Comments',
 	'tgsdisqus:label:disqus_comments' => 'Disqus Comments',
+	'tgsdisqus:label:secretkey' => 'Disqus API Secret Key',
+	'tgsdisqus:label:publickey' => 'Disqus API Public Key',
+	'tgsdisqus:label:notifycomment' => 'Notify users when content is commented?',
+
+	// Notifications
+	'tgsdisqus:comment:subject' => 'You have a new public comment!',
+	'tgsdisqus:comment:body' => "You have a new public comment on your item \"%s\". 
+
+To reply or view the original item, click here:
+
+%s
+
+Please note: Because this is a public comment, it may end up being flagged as inappropriate and removed by a moderator.
+
+You cannot reply to this email.",
+
 );
 
 add_translation('en',$english);

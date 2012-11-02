@@ -16,7 +16,7 @@ if (elgg_instanceof($vars['entity'], 'object')) {
 	if (!$vars['id']) {
 		$vars['id'] = 'tgs-site-comments-container';
 	}
-	
+
 	// Add a class to the site comments container
 	$vars['class'] .= ' tgs-comments-container';
 
@@ -70,19 +70,33 @@ if (elgg_instanceof($vars['entity'], 'object')) {
 	if (($public_only == 'yes' && !elgg_is_logged_in()) || $public_only != 'yes')  {
 		// Load Utility JS
 		elgg_load_js('elgg.tgs_disqus');
-	
+
 		$disqus_shortname = elgg_get_plugin_setting('disqus_shortname', 'tgs_disqus');
 		$disqus_identifier = $vars['entity']->guid;
 ?>
 		<div id="disqus_thread" class="tgs-comments-container<?php echo $disqus_selected ? '' : ' tgs-disqus-hidden'; ?>"></div>
 		<script type="text/javascript">
 			/* START DISQUS CODE */
-		
-			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			
+			// CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE
 			var disqus_shortname = '<?php echo $disqus_shortname; ?>'; // Disqus shortname, configured in admin settings
 			var disqus_identifier = '<?php echo $disqus_identifier; ?>'; // Unique identifier, in this case the entity guid
+			//var disqus_developer = 1; // developer mode is on ** MAKE SURE THIS IS DISABLED IN PRODUCTION **
+			
+			// Further Config
+			function disqus_config() {
+				// Add onNewComment callback
+			    this.callbacks.onNewComment = [function(data) { 
+					var params = {
+						entity_guid: disqus_identifier,
+						comment: data
+					};
+					// Trigger a JS hook for new comments
+					elgg.trigger_hook('new_comment', 'disqus', params); 
+				}];
+			}
 
-			/* * * DON'T EDIT BELOW THIS LINE * * */
+			/**** DON'T EDIT BELOW THIS LINE ****/
 			(function() {
 				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 				dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';

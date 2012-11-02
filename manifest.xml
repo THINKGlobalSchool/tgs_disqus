@@ -14,10 +14,4 @@
 		<type>elgg_version</type>
 		<version>2012061800</version>
 	</requires>
-	<requires>
-		<type>plugin</type>
-		<name>modules</name>
-		<version>1.8</version>
-		<comparison>ge</comparison>
-	</requires>
 </plugin_manifest>
