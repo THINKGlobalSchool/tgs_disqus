@@ -31,6 +31,10 @@ $js = elgg_get_loaded_js('disqus_iframe');
 // Load custom iframe CSS
 $css = elgg_get_loaded_external_files('css', 'disqus_iframe');
 
+// Page title
+$title = elgg_get_config('sitename');
+$title .= ": " . ($entity->name ? $entity->name : $entity->title);
+
 ?>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -45,16 +49,20 @@ $css = elgg_get_loaded_external_files('css', 'disqus_iframe');
 		<script type="text/javascript">
 			<?php echo elgg_view('js/initialize_elgg'); ?>
 		</script>
+		<title><?php echo $title; ?></title>
 	</head>
 	<body>
 	<!-- Disqus Thread Container -->
-	<div id="disqus_thread"></div>
+	<div id="disqus_thread">
+		<div class='elgg-ajax-loader'></div>
+	</div>
 
 	<script type="text/javascript"> 
 		/*** Disqus Configuration Variables ***/
 		var disqus_shortname = "<?php echo $disqus_shortname ?>"; // Disqus shortname, configured in admin settings
 		var disqus_identifier = '<?php echo $disqus_identifier; ?>'; // Unique identifier, in this case the entity guid
 		var disqus_url = '<?php echo $disqus_url; ?>'; // Permalink
+		var disqus_title = '<?php echo $title; ?>'; // Page title
 
 		/*** Disqus Callback Config ***/
 		function disqus_config() {		
