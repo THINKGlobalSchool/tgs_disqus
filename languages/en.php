@@ -18,6 +18,8 @@ $english = array(
 	'tgsdisqus:label:secretkey' => 'Disqus API Secret Key',
 	'tgsdisqus:label:publickey' => 'Disqus API Public Key',
 	'tgsdisqus:label:notifycomment' => 'Notify users when content is commented?',
+	'tgsdisqus:label:whatisdisqus' => 'What is Disqus?',
+	'tgsdisqus:label:disqusinfo' => 'Disqus is a third party commenting system that provides social network integration (ie: Facebook and Twitter) as well as other community features. Visit the <a href="http://disqus.com/" target="_blank">Disqus website</a> for more information.',
 
 	// Notifications
 	'tgsdisqus:comment:subject' => 'You have a new public comment!',

@@ -33,9 +33,21 @@ ul.elgg-menu-tgs-disqus-tabs {
 	width: 100%;
 }
 
-/* Tweak regular elgg-comments container */
-.tgs-site-comments-container.elgg-comments {
-	margin-top: 0px;
+/* 'What is Disqus' styles */
+.tgs-disqus-help-popup { 
+	border: 1px solid #bbb;
+    background-color: #eee;
+    width: 98%;
+	padding: 5px;
+	height: auto;
+	margin-top: 3px;
+	text-align: left;
+	display: block;
+	font-size: 85%;
+}
+
+.tgs-disqus-help-small {
+	font-size: 85% !important; 
 }
 
 /*</style>*/

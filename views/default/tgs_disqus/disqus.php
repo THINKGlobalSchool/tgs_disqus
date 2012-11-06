@@ -72,10 +72,20 @@ if (elgg_instanceof($vars['entity'], 'object') && $vars['entity']->access_id == 
 		
 		$hidden_class = $disqus_selected ? '' : ' tgs-disqus-hidden';
 		
- 		echo "<iframe id='tgs-disqus-iframe-$identifier' scrolling='no' frameborder='0' src='$iframe_url' class='tgs-disqus-iframe tgs-comments-container tgs-disqus-container $hidden_class'></iframe>";
+		$popup_label = elgg_echo('tgsdisqus:label:whatisdisqus');
+		$popup_info = elgg_echo('tgsdisqus:label:disqusinfo');
+	
+		$popup = "<span class='tgs-disqus-help-small'><a rel='toggle' href='#tgs-disqus-help-info-$identifier'>$popup_label</a></span><div id='tgs-disqus-help-info-$identifier' class='tgs-disqus-help-popup' style='display: none;'>$popup_info</div>";
+
+ 		$iframe = "<iframe class='tgs-disqus-iframe' id='tgs-disqus-iframe-$identifier' scrolling='no' frameborder='0' src='$iframe_url'></iframe>";
+
+		echo "<div class='tgs-comments-container tgs-disqus-container $hidden_class'>
+			$popup
+			$iframe
+		</div>";
 ?>
 		<script type='text/javascript'>
-			// Helper function to resize iframe
+			// Helper function to resize iframe when content is updated
 			function resizeFrame(height){
 				$('iframe#tgs-disqus-iframe-<?php echo $identifier; ?>').attr("height", height + 25);
 			}

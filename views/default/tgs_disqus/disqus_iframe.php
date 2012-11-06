@@ -47,16 +47,16 @@ $css = elgg_get_loaded_external_files('css', 'disqus_iframe');
 		</script>
 	</head>
 	<body>
-	<!--<div id="disqus_thread" class="tgs-disqus-container tgs-comments-container"></div>-->
+	<!-- Disqus Thread Container -->
 	<div id="disqus_thread"></div>
 
 	<script type="text/javascript"> 
-		/*** CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE ***/
+		/*** Disqus Configuration Variables ***/
 		var disqus_shortname = "<?php echo $disqus_shortname ?>"; // Disqus shortname, configured in admin settings
 		var disqus_identifier = '<?php echo $disqus_identifier; ?>'; // Unique identifier, in this case the entity guid
 		var disqus_url = '<?php echo $disqus_url; ?>'; // Permalink
 
-		// Further Disqus Config
+		/*** Disqus Callback Config ***/
 		function disqus_config() {		
 			// Add onNewComment callback
 		    this.callbacks.onNewComment = [function(data) { 
@@ -69,18 +69,22 @@ $css = elgg_get_loaded_external_files('css', 'disqus_iframe');
 			}];
 		}
 
-		/* Developer Mode (Disable for production) */
+		/*** Developer Mode (Disable for production) ***/
 		//var disqus_developer = 1;
 
-		 /*** DON'T EDIT BELOW THIS LINE ***/
-		 (function() {
-		     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		     dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-		     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		 })();
-
+		/*** Disqus Code ***/
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+		/*** End Disqus Code ***/
+		
+		/* Fire an event when the page is resized */
 		$('#disqus_thread').resize(function(event) {
+			// Get new height
 			frameHeight = $('#disqus_thread').height();
+			// Call resizeFrame on parent to update the iframe size
 			parent.resizeFrame(frameHeight);
 		});
 	</script>
