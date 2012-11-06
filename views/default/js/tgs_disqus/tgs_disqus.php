@@ -23,17 +23,18 @@ elgg.tgs_disqus.init = function () {
 
 // Click handler for comment navigation
 elgg.tgs_disqus.commentTabClick = function(event) {
+	var $parent = $(this).parent();
 	// Clear selected state
-	$('.tgs-disqus-comment-tab').removeClass('elgg-state-selected');
+	$parent.find('.tgs-disqus-comment-tab').removeClass('elgg-state-selected');
 
 	// Select this tab
 	$(this).addClass('elgg-state-selected');
 
 	// Hide comments containers
-	$('.tgs-comments-container').addClass('tgs-disqus-hidden');
+	$(this).closest('div').find('.tgs-comments-container').addClass('tgs-disqus-hidden');
 
 	// Show selected container
-	$($(this).find('a').attr('href')).removeClass('tgs-disqus-hidden');
+	$(this).closest('div').find($(this).find('a').attr('href').substr(1)).removeClass('tgs-disqus-hidden');
 
 	event.preventDefault();
 }

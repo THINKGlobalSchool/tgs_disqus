@@ -28,4 +28,14 @@ ul.elgg-menu-tgs-disqus-tabs {
 	margin-top: 0px !important;
 }
 
+/* Disqus iframe */
+.tgs-disqus-iframe {
+	width: 100%;
+}
+
+/* Tweak regular elgg-comments container */
+.tgs-site-comments-container.elgg-comments {
+	margin-top: 0px;
+}
+
 /*</style>*/
