@@ -55,7 +55,7 @@ $css = elgg_get_loaded_external_files('css', 'disqus_iframe');
 		var disqus_shortname = "<?php echo $disqus_shortname ?>"; // Disqus shortname, configured in admin settings
 		var disqus_identifier = '<?php echo $disqus_identifier; ?>'; // Unique identifier, in this case the entity guid
 		var disqus_url = '<?php echo $disqus_url; ?>'; // Permalink
-	
+
 		// Further Disqus Config
 		function disqus_config() {		
 			// Add onNewComment callback
@@ -69,8 +69,8 @@ $css = elgg_get_loaded_external_files('css', 'disqus_iframe');
 			}];
 		}
 
-		/* Developer Mode (Disable for prod) */
-		var disqus_identifier = '<?php echo $disqus_identifier; ?>'; // Unique identifier, in this case the entity guid
+		/* Developer Mode (Disable for production) */
+		//var disqus_developer = 1;
 
 		 /*** DON'T EDIT BELOW THIS LINE ***/
 		 (function() {
@@ -78,7 +78,7 @@ $css = elgg_get_loaded_external_files('css', 'disqus_iframe');
 		     dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
 		     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 		 })();
-	
+
 		$('#disqus_thread').resize(function(event) {
 			frameHeight = $('#disqus_thread').height();
 			parent.resizeFrame(frameHeight);
