@@ -29,9 +29,7 @@ To reply or view the original item, click here:
 
 %s
 
-Please note: Because this is a public comment, it may end up being flagged as inappropriate and removed by a moderator.
-
-You cannot reply to this email.",
+Please note: Because this is a public comment, it may end up being flagged as inappropriate and removed by a moderator.",
 
 );
 
